@@ -1,5 +1,5 @@
-ENV SOURCE_COMMIT=${SOURCE_COMMIT}
 FROM python:3
+ENV SOURCE_COMMIT=${SOURCE_COMMIT}
 ARG wget_lua=http://xor.meo.ws/zEMhOKrjwKi69SIWBdxiQGJ2IpzzSIx4/wget-lua
 RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-install-recommends -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold -o Dpkg::Options::=--force-unsafe-io update \
  && DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-install-recommends -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold -o Dpkg::Options::=--force-unsafe-io install rsync liblua5.1-0 libluajit-5.1-2 libidn11 \
