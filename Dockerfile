@@ -8,8 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-in
  && pip install requests seesaw warcio \
  && wget "${wget_lua}" -O /usr/local/bin/wget-lua \
  && chmod +x /usr/local/bin/wget-lua \
- && rm -rf /var/lib/apt/lists/* \
- && sed -i 's|DEFAULT_RETRY_DELAY = 60$|DEFAULT_RETRY_DELAY = 0|;s|self\.retry_delay += 10|self.retry_delay += 0|' /usr/local/lib/python3.7/site-packages/seesaw/tracker.py
+ && rm -rf /var/lib/apt/lists/*
 WORKDIR /grab
 STOPSIGNAL SIGINT
 ENTRYPOINT ["run-pipeline3", "--disable-web-server", "pipeline.py"]
