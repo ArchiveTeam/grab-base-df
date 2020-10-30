@@ -4,7 +4,8 @@ ARG VERSION=20190803.01
 # ARG wget_lua=http://xor.meo.ws/W9UAWrao_ftJLSVoBXf3EK9YLffbBUjv/wget-lua
 # ARG wget_lua=http://xor.meo.ws/JhOxaIfOOxy-WnHXqSiLazSdjk-nG7uQ/wget-lua
 # ARG wget_lua=http://xor.meo.ws/clRKfzszOck2JjAChR0MYsjqxybWlmsJ/wget-lua
-ARG wget_lua=http://xor.meo.ws/bvj4ouZsnftrFk-oRZp0hfP-3Tan5H-z/wget-lua
+# ARG wget_lua=http://xor.meo.ws/bvj4ouZsnftrFk-oRZp0hfP-3Tan5H-z/wget-lua
+ARG wget_lua=http://xor.meo.ws/1hh92cDPD-Rfbd7dUT_AGmsHutAr_QeT/wget-lua
 ENV LC_ALL=C
 RUN echo deb http://deb.debian.org/debian buster-backports main contrib > /etc/apt/sources.list.d/backports.list \
  && DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-install-recommends -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold -o Dpkg::Options::=--force-unsafe-io update \
