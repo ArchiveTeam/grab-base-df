@@ -1,10 +1,6 @@
 FROM python:3
 ARG VERSION=20190803.01
-# ARG wget_lua=http://xor.meo.ws/zEMhOKrjwKi69SIWBdxiQGJ2IpzzSIx4/wget-lua
-# ARG wget_lua=http://xor.meo.ws/W9UAWrao_ftJLSVoBXf3EK9YLffbBUjv/wget-lua
-# ARG wget_lua=http://xor.meo.ws/JhOxaIfOOxy-WnHXqSiLazSdjk-nG7uQ/wget-lua
-# ARG wget_lua=http://xor.meo.ws/clRKfzszOck2JjAChR0MYsjqxybWlmsJ/wget-lua
-# ARG wget_lua=http://xor.meo.ws/bvj4ouZsnftrFk-oRZp0hfP-3Tan5H-z/wget-lua
+# Current wget-at version: 1.20.3-at.20201030.01
 ARG wget_lua=http://xor.meo.ws/1hh92cDPD-Rfbd7dUT_AGmsHutAr_QeT/wget-lua
 ENV LC_ALL=C
 RUN echo deb http://deb.debian.org/debian buster-backports main contrib > /etc/apt/sources.list.d/backports.list \
