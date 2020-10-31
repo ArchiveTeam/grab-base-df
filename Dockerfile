@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3
 ARG VERSION=20190803.01
 # ARG wget_lua=http://xor.meo.ws/zEMhOKrjwKi69SIWBdxiQGJ2IpzzSIx4/wget-lua
 # ARG wget_lua=http://xor.meo.ws/W9UAWrao_ftJLSVoBXf3EK9YLffbBUjv/wget-lua
