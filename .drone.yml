@@ -34,4 +34,4 @@ steps:
     tags:
     - gnutls
     build_args:
-    - TLSTYPE=openssl
+    - TLSTYPE=gnutls
