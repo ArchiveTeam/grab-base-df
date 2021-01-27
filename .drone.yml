@@ -1,0 +1,37 @@
+---
+kind: pipeline
+name: default
+steps:
+- name: docker_openssl
+  image: plugins/docker
+  settings:
+    registry: atdr-writer.meo.ws
+    username:
+      from_secret: atdr_user
+    password:
+      from_secret: atdr_pass
+    repo: atdr-writer.meo.ws/archiveteam/grab-base
+    dockerfile: Dockerfile
+    purge: true
+    auto_tag: false
+    tags:
+    - latest
+    - openssl
+    build_args:
+    - SSLTYPE=openssl
+- name: docker_gnutls
+  image: plugins/docker
+  settings:
+    registry: atdr-writer.meo.ws
+    username:
+      from_secret: atdr_user
+    password:
+      from_secret: atdr_pass
+    repo: atdr-writer.meo.ws/archiveteam/grab-base
+    dockerfile: Dockerfile
+    purge: true
+    auto_tag: false
+    tags:
+    - gnutls
+    build_args:
+    - SSLTYPE=openssl
