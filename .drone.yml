@@ -19,6 +19,7 @@ steps:
     - openssl
     build_args:
     - TLSTYPE=openssl
+    experimental: true
     squash: true
 - name: docker_gnutls
   image: plugins/docker
@@ -36,4 +37,5 @@ steps:
     - gnutls
     build_args:
     - TLSTYPE=gnutls
+    experimental: true
     squash: true
