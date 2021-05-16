@@ -11,5 +11,7 @@ RUN echo deb http://deb.debian.org/debian buster-backports main contrib > /etc/a
  && chmod +x /usr/local/bin/wget-lua \
  && rm -rf /var/lib/apt/lists/*
 WORKDIR /grab
+ONBUILD COPY . /grab
+ONBUILD RUN test -x /grab/wget-at || ln -fs /usr/local/bin/wget-lua /grab/wget-at
 STOPSIGNAL SIGINT
 ENTRYPOINT ["run-pipeline3", "--disable-web-server", "pipeline.py"]
