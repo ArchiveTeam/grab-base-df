@@ -1,6 +1,6 @@
 ARG TLSTYPE=openssl
 FROM atdr.meo.ws/archiveteam/wget-lua:v1.20.3-at-${TLSTYPE} AS wget
-FROM python:3-slim
+FROM python:3-slim-buster
 COPY --from=wget /wget /usr/local/bin/wget-lua
 ENV LC_ALL=C
 RUN echo deb http://deb.debian.org/debian buster-backports main contrib > /etc/apt/sources.list.d/backports.list \
