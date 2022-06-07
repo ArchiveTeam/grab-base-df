@@ -1,5 +1,5 @@
 ARG TLSTYPE=openssl
-FROM atdr.meo.ws/archiveteam/wget-lua:v1.20.3-at-${TLSTYPE} AS wget
+FROM atdr.meo.ws/archiveteam/wget-lua:v1.21.3-at-${TLSTYPE} AS wget
 FROM python:3.9-slim-buster
 COPY --from=wget /wget /usr/local/bin/wget-lua
 ENV LC_ALL=C
