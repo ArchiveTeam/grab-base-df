@@ -10,6 +10,7 @@ RUN echo deb http://deb.debian.org/debian buster-backports main contrib > /etc/a
  && pip install --no-cache-dir requests seesaw zstandard \
  && chmod +x /usr/local/bin/wget-lua \
  && rm -rf /var/lib/apt/lists/*
+RUN /usr/local/bin/wget-lua --help | grep -iE "gnu|warc|lua"
 WORKDIR /grab
 ONBUILD COPY . /grab
 ONBUILD RUN test -x /grab/wget-at || ln -fs /usr/local/bin/wget-lua /grab/wget-at
