@@ -8,7 +8,7 @@ RUN echo deb http://deb.debian.org/debian buster-backports main contrib > /etc/a
  && DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-install-recommends -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold -o Dpkg::Options::=--force-unsafe-io install rsync liblua5.1-0 libluajit-5.1-2 libidn11 lua-socket lua-filesystem lua-sec lua-zip libpsl5 git poppler-utils luarocks \
  && DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-install-recommends -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold -o Dpkg::Options::=--force-unsafe-io -t buster-backports install zstd libzstd-dev libzstd1 \
  && pip install --no-cache-dir requests seesaw zstandard \
- && luarocks install html-entities
+ && luarocks install html-entities \
  && chmod +x /usr/local/bin/wget-lua \
  && rm -rf /var/lib/apt/lists/*
 RUN /usr/local/bin/wget-lua --help | grep -iE "gnu|warc|lua"
