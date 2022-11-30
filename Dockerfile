@@ -12,6 +12,8 @@ RUN echo deb http://deb.debian.org/debian buster-backports main contrib > /etc/a
  && luarocks install idn2 \
  && chmod +x /usr/local/bin/wget-lua \
  && rm -rf /var/lib/apt/lists/*
+RUN echo "#!/bin/bash\n\$@" > /usr/bin/sudo \
+ && chmod +x /usr/bin/sudo
 RUN /usr/local/bin/wget-lua --help | grep -iE "gnu|warc|lua"
 WORKDIR /grab
 ONBUILD COPY . /grab
