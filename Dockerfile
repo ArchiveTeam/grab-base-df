@@ -17,7 +17,7 @@ RUN echo "#!/bin/bash\n\$@" > /usr/bin/sudo \
 RUN /usr/local/bin/wget-lua --help | grep -iE "gnu|warc|lua"
 WORKDIR /grab
 ONBUILD COPY . /grab
-ONBUILD RUN test -x warrior-install.sh && echo "warrior-install.sh found" && sh warrior-install.sh || echo "warrior-install.sh not found."
+ONBUILD RUN (test -x warrior-install.sh || touch warrior-install.sh) && sh warrior-install.sh
 ONBUILD RUN test -x /grab/wget-at || ln -fs /usr/local/bin/wget-lua /grab/wget-at
 STOPSIGNAL SIGINT
 ENTRYPOINT ["run-pipeline3", "--disable-web-server", "pipeline.py"]
