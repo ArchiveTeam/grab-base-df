@@ -18,7 +18,8 @@ dependencies = {
    "crc32",
    "md5",
    "base64",
-   "lua-cjson"
+   "lua-cjson",
+   "utf8"
 }
 build = {
     type = "builtin",
