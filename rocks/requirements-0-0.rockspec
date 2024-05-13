@@ -19,7 +19,8 @@ dependencies = {
    "md5",
    "base64",
    "lua-cjson",
-   "utf8"
+   "utf8",
+   "miniblooms" -- should already be installed
 }
 build = {
     type = "builtin",
