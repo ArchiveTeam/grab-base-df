@@ -20,7 +20,9 @@ dependencies = {
    "base64",
    "lua-cjson",
    "utf8",
-   "miniblooms" -- should already be installed
+   "miniblooms", -- should already be installed
+   "luabitop",
+   "bit32"
 }
 build = {
     type = "builtin",
