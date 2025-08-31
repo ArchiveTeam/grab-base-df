@@ -22,7 +22,10 @@ dependencies = {
    "utf8",
    "miniblooms", -- should already be installed
    "luabitop",
-   "bit32"
+   "bit32",
+   "luaossl",
+   "lua-zlib",
+   "lua-basex"
 }
 build = {
     type = "builtin",

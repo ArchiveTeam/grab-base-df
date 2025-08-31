@@ -1,7 +1,7 @@
 ARG TLSTYPE=openssl
 FROM atdr.meo.ws/archiveteam/wget-lua:v1.21.3-at-${TLSTYPE} AS wget
 FROM python:3.9-slim-bookworm
-LABEL version="20250829.01"
+LABEL version="20250831.01"
 COPY --from=wget /wget /usr/local/bin/wget-lua
 COPY --from=wget /usr/local/lib /usr/local/lib
 RUN ldconfig
@@ -19,6 +19,8 @@ RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-in
   # for lua 'luazip'
   libzzip-dev \
   libpsl5 \
+  # for lua 'lua-zlib'
+  zlib1g-dev \
  && rm -rf /var/lib/apt/lists/*
 RUN chmod +x /usr/local/bin/wget-lua
 RUN /usr/local/bin/wget-lua --help | grep -iE "gnu|warc|lua|dns|host|resolv"
