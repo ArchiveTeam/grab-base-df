@@ -1,7 +1,7 @@
 ARG TLSTYPE=openssl
 FROM atdr.meo.ws/archiveteam/wget-lua:v1.21.3-at-${TLSTYPE} AS wget
 FROM python:3.9-slim-bookworm
-LABEL version="20250831.01"
+LABEL version="20260115.01"
 COPY --from=wget /wget /usr/local/bin/wget-lua
 COPY --from=wget /usr/local/lib /usr/local/lib
 RUN ldconfig
