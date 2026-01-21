@@ -36,4 +36,5 @@ ONBUILD COPY . /grab
 ONBUILD RUN (test -x warrior-install.sh || touch warrior-install.sh) && sh warrior-install.sh
 ONBUILD RUN ln -fs /usr/local/bin/wget-lua /grab/wget-at
 STOPSIGNAL SIGINT
+LABEL com.centurylinklabs.watchtower.stop-signal="SIGINT"
 ENTRYPOINT ["run-pipeline3", "--disable-web-server", "pipeline.py"]
