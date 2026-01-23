@@ -1,7 +1,7 @@
 ARG TLSTYPE=openssl
 FROM atdr.meo.ws/archiveteam/wget-lua:v1.21.3-at-${TLSTYPE} AS wget
 FROM python:3.9-slim-bookworm
-LABEL version="20260123.03"
+LABEL version="20260123.04"
 COPY --from=wget /wget /usr/local/bin/wget-lua
 COPY --from=wget /usr/local/lib /usr/local/lib
 RUN ldconfig
@@ -24,10 +24,10 @@ RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-in
  && rm -rf /var/lib/apt/lists/*
 RUN chmod +x /usr/local/bin/wget-lua
 RUN /usr/local/bin/wget-lua --help | grep -iE "gnu|warc|lua|dns|host|resolv"
-COPY dnsmasq.conf /etc/dnsmasq.conf
-COPY scripts/get_random_ipv4.py /get_random_ipv4.py
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod u+x /entrypoint.sh
+#COPY dnsmasq.conf /etc/dnsmasq.conf
+#COPY scripts/get_random_ipv4.py /get_random_ipv4.py
+#COPY entrypoint.sh /entrypoint.sh
+#RUN chmod u+x /entrypoint.sh
 COPY rocks/requirements-0-0.rockspec /tmp/rocks/requirements-0-0.rockspec
 COPY rocks/miniblooms-0.5-2.rockspec /tmp/rocks/miniblooms-0.5-2.rockspec
 COPY requirements.txt /tmp/requirements.txt
@@ -40,4 +40,4 @@ ONBUILD COPY . /grab
 ONBUILD RUN (test -x warrior-install.sh || touch warrior-install.sh) && sh warrior-install.sh
 ONBUILD RUN ln -fs /usr/local/bin/wget-lua /grab/wget-at
 STOPSIGNAL SIGINT
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["run-pipeline3", "--disable-web-server", "pipeline.py"]
