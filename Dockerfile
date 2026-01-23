@@ -1,7 +1,7 @@
 ARG TLSTYPE=openssl
 FROM atdr.meo.ws/archiveteam/wget-lua:v1.21.3-at-${TLSTYPE} AS wget
 FROM python:3.9-slim-bookworm
-LABEL version="20260123.02"
+LABEL version="20260123.03"
 COPY --from=wget /wget /usr/local/bin/wget-lua
 COPY --from=wget /usr/local/lib /usr/local/lib
 RUN ldconfig
@@ -25,7 +25,7 @@ RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-in
 RUN chmod +x /usr/local/bin/wget-lua
 RUN /usr/local/bin/wget-lua --help | grep -iE "gnu|warc|lua|dns|host|resolv"
 COPY dnsmasq.conf /etc/dnsmasq.conf
-COPY scripts/get_random_ipv4.py /tmp/get_random_ipv4.py
+COPY scripts/get_random_ipv4.py /get_random_ipv4.py
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod u+x /entrypoint.sh
 COPY rocks/requirements-0-0.rockspec /tmp/rocks/requirements-0-0.rockspec
