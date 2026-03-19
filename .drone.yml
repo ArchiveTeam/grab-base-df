@@ -35,7 +35,7 @@ steps:
     - gnutls
     build_args:
     - TLSTYPE=gnutls
-- name: docker_gnss
+- name: docker_nss
   image: plugins/docker
   settings:
     registry: atdr-writer.meo.ws
