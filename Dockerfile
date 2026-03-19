@@ -1,9 +1,11 @@
 ARG TLSTYPE=openssl
 FROM atdr.meo.ws/archiveteam/wget-lua:v1.21.3-at-${TLSTYPE} AS wget
 FROM python:3.9-slim-bookworm
-LABEL version="20260313.01"
+LABEL version="20260319.01"
 COPY --from=wget /wget /usr/local/bin/wget-lua
 COPY --from=wget /usr/local/lib /usr/local/lib
+COPY --from=wget /etc/ssl/certs /etc/ssl/certs
+COPY --from=wget /usr/local/etc/wgetrc /usr/local/etc/wgetrc
 RUN ldconfig
 ENV LC_ALL=C
 RUN DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -qqy --no-install-recommends -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold -o Dpkg::Options::=--force-unsafe-io update \
