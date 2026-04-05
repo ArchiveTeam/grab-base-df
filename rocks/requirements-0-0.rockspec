@@ -25,7 +25,8 @@ dependencies = {
    "bit32",
    "luaossl",
    "lua-zlib",
-   "lua-basex"
+   "lua-basex",
+   "date"
 }
 build = {
     type = "builtin",
