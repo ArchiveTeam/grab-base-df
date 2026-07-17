@@ -1,4 +1,4 @@
 requests
-git+https://github.com/ArchiveTeam/seesaw-kit.git@700fadd7d331ec6cbc9266d40ddca8c3fe9701bf
+git+https://github.com/ArchiveTeam/seesaw-kit.git@bb6673d27a8717e13efe5d7deb3628349cd08585
 zstandard
 validators
