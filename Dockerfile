@@ -1,7 +1,7 @@
 ARG TLSTYPE=openssl
 FROM atdr.meo.ws/archiveteam/wget-lua:v1.21.3-at-${TLSTYPE} AS wget
 FROM python:3.9-slim-bookworm
-LABEL version="20260720.01"
+LABEL version="20260826.01"
 COPY --from=wget /wget /usr/local/bin/wget-lua
 COPY --from=wget /usr/local/lib /usr/local/lib
 COPY --from=wget /etc/ssl/certs /etc/ssl/certs
@@ -33,9 +33,10 @@ WORKDIR /tmp
 RUN luarocks install rocks/miniblooms-0.5-2.rockspec
 RUN luarocks install --only-deps rocks/requirements-0-0.rockspec
 RUN pip install --no-cache-dir -r requirements.txt
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 WORKDIR /grab
 ONBUILD COPY . /grab
 ONBUILD RUN (test -x warrior-install.sh || touch warrior-install.sh) && sh warrior-install.sh
 ONBUILD RUN ln -fs /usr/local/bin/wget-lua /grab/wget-at
 STOPSIGNAL SIGINT
-ENTRYPOINT ["/usr/bin/tini", "--", "run-pipeline3", "--disable-web-server", "pipeline.py"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
