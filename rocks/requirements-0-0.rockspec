@@ -29,7 +29,8 @@ dependencies = {
    "date",
    "uuid",
    "lua-iconv",
-   "basexx"
+   "basexx",
+   "lua-protobuf"
 }
 build = {
     type = "builtin",
