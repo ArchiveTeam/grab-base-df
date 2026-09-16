@@ -30,7 +30,8 @@ dependencies = {
    "uuid",
    "lua-iconv",
    "basexx",
-   "lua-protobuf"
+   "lua-protobuf",
+   "org.conman.dns"
 }
 build = {
     type = "builtin",
