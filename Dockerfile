@@ -1,7 +1,7 @@
 ARG TLSTYPE=openssl
 FROM atdr.meo.ws/archiveteam/wget-lua:v1.21.3-at-${TLSTYPE} AS wget
 FROM python:3.9-slim-bookworm
-LABEL version="20261116.01"
+LABEL version="20261116.02"
 COPY --from=wget /wget /usr/local/bin/wget-lua
 COPY --from=wget /usr/local/lib /usr/local/lib
 COPY --from=wget /etc/ssl/certs /etc/ssl/certs
@@ -30,9 +30,13 @@ RUN chmod +x /usr/local/bin/wget-lua
 RUN /usr/local/bin/wget-lua --help | grep -iE "gnu|warc|lua|dns|host|resolv"
 COPY rocks/requirements-0-0.rockspec /tmp/rocks/requirements-0-0.rockspec
 COPY rocks/miniblooms-0.5-2.rockspec /tmp/rocks/miniblooms-0.5-2.rockspec
+COPY rocks/luasocket-3.1.0-2-patches.lua /tmp/rocks/luasocket-3.1.0-2-patches.lua
 COPY requirements.txt /tmp/requirements.txt
 WORKDIR /tmp
 RUN luarocks install rocks/miniblooms-0.5-2.rockspec
+RUN luarocks download --rockspec luasocket 3.1.0-1 \
+ && cat luasocket-3.1.0-1.rockspec rocks/luasocket-3.1.0-2-patches.lua > luasocket-3.1.0-2.rockspec \
+ && luarocks install luasocket-3.1.0-2.rockspec
 RUN luarocks install --only-deps rocks/requirements-0-0.rockspec
 RUN pip install --no-cache-dir -r requirements.txt
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
