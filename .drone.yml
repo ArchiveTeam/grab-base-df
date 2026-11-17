@@ -1,6 +1,9 @@
 ---
 kind: pipeline
 name: default
+platform:
+  os: linux
+  arch: amd64
 steps:
 - name: docker_openssl
   image: plugins/docker
@@ -19,6 +22,9 @@ steps:
     - openssl
     build_args:
     - TLSTYPE=openssl
+    platforms:
+    - linux/amd64
+    - linux/arm64
 - name: docker_gnutls
   image: plugins/docker
   settings:
@@ -35,6 +41,9 @@ steps:
     - gnutls
     build_args:
     - TLSTYPE=gnutls
+    platforms:
+    - linux/amd64
+    - linux/arm64
 - name: docker_nss
   image: plugins/docker
   settings:
@@ -51,3 +60,6 @@ steps:
     - nss
     build_args:
     - TLSTYPE=nss
+    platforms:
+    - linux/amd64
+    - linux/arm64
